@@ -1,0 +1,87 @@
+﻿<head>
+<script>
+	$(function() {
+		$( "#accordion" ).accordion({
+			autoHeight: false,
+			navigation: true
+		});
+	});
+	</script>
+</head>
+
+<div align="center">
+<h3>SOME USER NAMES</h3><BR/>
+<%= link_to 'BreakingNews',:controller=>'link',:action=>'index',:user_name=>'BreakingNews'%><BR/>
+<%= link_to 'INTEL',:controller=>'link',:action=>'index',:user_name=>'intel'%><BR/>
+<%= link_to 'NYTIMES',:controller=>'link',:action=>'index',:user_name=>'nytimes'%><BR/>
+<%= link_to 'ABC',:controller=>'link',:action=>'index',:user_name=>'ABC'%><BR/>
+<%= link_to 'TIMES OF INDIA',:controller=>'link',:action=>'index',:user_name=>'timesofindia'%><BR/>
+ 
+<h1>ENTER USER NAME TO GET LATEST TWEETS</h1>
+<div class ="flex-module ">
+<%begin%>
+<b>PROFILE IMAGE</b>
+ 
+<%=image_tag @recent.results[0].profile_image_url,:size => "48x48" %> 
+
+<b>ACCOUNT CREATED ON</b>
+
+<%=image_tag @recent.results[0].created_at.to_date %>
+</div>
+<br/>
+
+<%= form_tag  do%>
+	<%= text_field_tag "user_name",nil,:placeholder => 'Enter user name ...' %>
+	<%= submit_tag "submit"%>
+<%end%>
+</div>
+<BR/><BR/>
+ <div id="TweetOut">
+ 	<%i = 1%>
+ 	<b>LATEST 10 TWEETS</b><BR/><BR/>
+ 	<div class="demo">
+ 		<div id="accordion">
+ 			<%	@recent.results.each do |each|%>
+ 			<h3><a href="#section1">Tweet <%= i.to_s%></a></h3>
+ 			<div>
+ 				<p><%= each.text%></p>
+ 			</div>
+ 			<%i=i+1%>
+ 			<%end%>
+ 		</div>
+ 	</div>
+
+
+ 	<BR/>
+ 	<b>FOLLOWERS COUNT</b>
+ 	<%= @recent.results[0].user.followers_count%>
+ 	<br/><BR/>
+
+ 	<B>FOLLOWING</B>
+ 	<%= @recent.results[0].user.friends_count%><br/><BR/>
+
+ 	<b>TOTAL TWEETS</b> 
+ 	<%= @recent.results[0].user.statuses_count%><br/><BR/>
+
+ 	<B>NAME</B>
+
+ 	<%= @recent.results[0].user.name%><br/><BR/>
+ 	<B>SCREEN NAME</B>
+ 	<%= @recent.results[0].user.screen_name%><br/><BR/>
+
+ 	<B>LISTED COUNT</B>
+ 	<%= @recent.results[0].user.listed_count%><br/><BR/>
+
+ 	<B>DATE CREATED</B>
+ 	<%= @recent.results[0].user.created_at%><br/><BR/>
+
+ 	<B>URL</B>
+ 	<%=@recent.results[0].user.url%><br/><BR/>
+ 	<b>DESCRIPTION</b>
+ 	<%= @recent.results[0].user.description%><BR/><BR/>
+
+ 	<%rescue%>
+ 	<H3> NO DATA FOUND</H3>
+ 	<%end%>
+
+ </div>

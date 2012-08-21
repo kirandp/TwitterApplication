@@ -1,0 +1,6 @@
+﻿development:
+  oauth_token: "44088177-emt4X7WTInE0mduxhaG0dh2cDJohxtTxeQkoqr0mr"
+  oauth_token_secret: "BWeq1IZbmjgny0VPel41KLhDvzqtykI7cwgrh5xbs"
+production:
+  oauth_token: "44088177-emt4X7WTInE0mduxhaG0dh2cDJohxtTxeQkoqr0mr"
+  oauth_token_secret: "BWeq1IZbmjgny0VPel41KLhDvzqtykI7cwgrh5xbs"
